@@ -3,6 +3,7 @@ const url = require('url');
 
 // Create the HTTP server
 http.createServer(async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   try {
     const parsedUrl = url.parse(req.url, true);
     const pathname = parsedUrl.pathname;
@@ -266,7 +267,7 @@ label {
       return;
     }
 
-    if (pathname === '/playlist') {
+    if (pathname === '/playlist' || pathname === '/playlist.m3u8') {
       const urlParam = query.url;
       const dataParam = query.data;
 
